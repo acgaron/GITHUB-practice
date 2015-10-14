@@ -4,6 +4,7 @@ drugtreatment <- read.csv("~/Downloads/drugtreatment.csv")
 View(drugtreatment)
 summary(drugtreatment) #descriptives
 
+#COMMENT HERE
 count(drugtreatment$race)
 count(drugtreatment$treat)
 count(drugtreatment$dfree)
