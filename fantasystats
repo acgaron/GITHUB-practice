@@ -1,0 +1,5 @@
+CREATE TABLE fantasystats AS
+SELECT nbastats.*, stlblk.sum                                                                                                                          
+from nbastats, stlblk
+where nbastats.player = stlblk.player;
+
