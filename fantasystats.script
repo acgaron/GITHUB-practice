@@ -8,3 +8,17 @@ FROM fantasystats
 WHERE pts > 18 AND stl > 2;
 
 
+#what 10 players led the league in rebounds last season?
+
+SELECT player, trb
+FROM fantasystats
+ORDER BY trb desc
+limit 10;
+
+#which player that averaged more than 7 assists a game had the highest rate of blocks last season?
+
+SELECT player, ast, blk
+FROM fantasystats
+WHERE ast >= 7
+ORDER BY blk desc
+LIMIT 10;
