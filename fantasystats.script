@@ -17,3 +17,24 @@ FROM fantasystats
 WHERE ast >= 7
 ORDER BY blk desc
 LIMIT 10;
+
+SELECT player, pts, trb
+FROM fantasystats
+ORDER BY pts desc
+LIMIT 10;
+
+SELECT (pts - avg(pts)over()) / stddev(pts) over() AS z_pts
+from fantasystats;
+
+CREATE TABLE zscorepts AS
+SELECT player, (pts - avg(pts)over()) / stddev(pts) over() AS z_pts                                                                                                                          
+from fantasystats;
+
+SELECT player, z_pts
+FROM zscorepts
+where z_pts >= 3;
+
+CREATE TABLE fantasystatszscorepts AS
+SELECT fantasystats.*, zscorepts.z_pts                                                                                                                          
+from fantasystats, zscorepts
+where fantasystats.player = zscorepts.player;
